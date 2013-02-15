@@ -8,9 +8,11 @@ ofxPosterize is ad addon for [openFrameworks](http://openFrameworks.cc/), creati
 ofxPosterize is usefull for apply [posterization](http://en.wikipedia.org/wiki/Posterization) effect to images.
 
 So, from this:
+
 ![original](https://raw.github.com/nkint/ofxPosterize/master/example-extractColor/bin/data/webinterface/original.jpg)
 
 to this:
+
 ![clustered](https://raw.github.com/nkint/ofxPosterize/master/example-extractColor/bin/data/webinterface/cluster.jpg)
 
 ###How it works
