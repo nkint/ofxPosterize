@@ -25,3 +25,7 @@ For now it uses [kmeans](http://en.wikipedia.org/wiki/K-means_clustering) algori
 ###Dependencies
 It uses [ofxCv](https://github.com/kylemcdonald/ofxCv) addons and the precompiled opencv lib used in ofxOpenCV. Add them in the project.
 
+###Examples
+For now there is only one example :-)
+This example is a palette extractor. You give an image, it extract 9 colors from it. The example is thought to be used from designer and so the result is displayed in a web-page where designers can easily copy the palette in RGB and hex format. The example can be seen [here](http://htmlpreview.github.com/?https://raw.github.com/nkint/ofxPosterize/master/example-extractColor/bin/data/webinterface/index.html)
+
