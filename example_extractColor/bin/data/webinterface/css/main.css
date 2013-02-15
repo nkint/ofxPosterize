@@ -1,0 +1,115 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+/* --------------------------
+   The header space for title and abstract of each tool
+   -------------------------- */
+
+.titlebox {
+	margin-bottom: 30px;
+	min-height: 90px;
+}
+
+.logo {
+	display: inline-block;
+	margin-right: 10px;
+	width: 66px;
+}
+
+.title {
+	margin-bottom: 0;
+	font-size: 60px;
+	font-weight: 300;
+  	line-height: 1;
+  	letter-spacing: -1px;
+  	color: inherit;
+	
+	display: inline-block;
+	padding-bottom: 10px;
+  	vertical-align: bottom;
+}
+
+.abstract {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: #999999;
+
+  margin-top: 0px;
+}
+
+.spacetitle {
+	border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.start{
+	background-color: #F4F3F2;
+	color: #555;
+
+	padding-bottom: 30px;
+	margin-bottom: 20px;
+}
+
+/* --------------------------
+   Color result
+   -------------------------- */
+.colorResult-top{
+	width: 100%;
+	height: 70px;
+}
+
+.colorResult-bottomBorder{
+	width: 100%;
+	height: 6px;
+}
+
+.colorResult-bottom{
+	width: 100%;
+	margin-bottom: 20px;
+	background-color:#EEE;
+}
+
+.colorResult-hex{
+	width: 100px;
+}
+
+.colorResult-rgb{
+	width: 100px;
+}
+
+.colorResult-value{
+	padding-left: 8px;
+	padding-top: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #888;
+}
+
+.colorResult-label{
+	padding-left: 8px;
+	padding-bottom: 8px;
+	font-size: 10px;
+	color: #AAA;
+	line-height: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
