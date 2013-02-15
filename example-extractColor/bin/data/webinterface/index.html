@@ -52,9 +52,9 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#about">What</a></li>
-                            <li><a href="#technology">How</a></li>
-                            <li><a href="#contact">Who</a></li>
+                            <li><a href="#what">What</a></li>
+                            <li><a href="#how">How</a></li>
+                            <li><a href="#who">Who</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -138,13 +138,62 @@
             </div>
         </div>  <!-- /container -->
 
-        
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <h3 id="what" class="spacetitle">What</h3>
+                    <p>Extract main colors from an image. Give in input a multicolored image and get as output a palette of main colors. For doing this you have to perform a kind of data reduction: from a dataset of lots of color extract the main ones. The extracted colors could not be in the initial dataset because some kind of averge is performed.</p>
+                </div>
+            
+                <div class="span4">
+                    <h3 id="How" class="spacetitle">How</h3>
+                    <p>How does it works? It implies some different concepts. Color palette are for designer, and image segmentation is for digital signal processing guys.. very different people that uses very different tools. The best interface is that one that is build with the best tool tailored to a particular concept. So the image processing and the segmentation math is done in C++ with OpenCV library. But make a nice interface usable by designers that works with colors is a little bit problematic with plain C++ (for example make a selectable text). But it is really easy to do it with javascript. So this color extractor application works first in C++ with openframeworks for doing the dirty math, and then a little .js file is build and used for a comfortable html interface.</p>
+                </div>
+            
+                <div class="span4">
+                    <h3 id="who" class="spacetitle">Who</h3>
+                    <p>I am <a href="http://sonsofpong.com/">Alberto</a> and I've neverd managed to do this little project without some of the astonishing tecnologies that some guys are building over there in the world and realise them in opensource.<br>This little piece of codes is born to be an example of <a href="https://github.com/nkint/ofxPosterize">ofxPosterize</a> addon for openframeworks.<br>Also I have to mention <a href="http://tools.medialab.sciences-po.fr/iwanthue/">I want Hue</a> because i grabbed the layout from this cool project, check it out!</p>
+                </div>
+            </div>
 
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+        </div>
+
+        <div class="container">
+            
+            <hr>
+
+            <footer>
+                <div class="row">
+                    <div class="span6">
+                        
+                        <p>
+                            I used:
+                            <br/>
+                            <a href="www.openframeworks.cc/">openframeworks</a>,
+                            <a href="http://opencv.org/">opencv</a> for the backend<br/>
+                            <a href="http://driven-by-data.net/about/chromajs/#/0">chroma.js</a>,
+                            <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>,
+                            <a href="http://jquery.com/">jQuery</a>,
+                            <a href="http://www.initializr.com/">Initializr</a> for the frontend.
+                        </p>
+                        <p>
+                            Check the project <a href="https://github.com/nkint/ofxPosterize">GitHub</a>.
+                        </p>
+                    
+                    </div>
+                    
+                    <div class="span6">
+                        <div style="text-align:right">
+                            <p>
+                                Help, bug report or contacting us:
+                                <br/>
+                                <i class="icon-hand-right"></i> <a href="https://github.com/nkint/ofxPosterize/issues">GitHub Issues</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+      
     </body>
 </html>
