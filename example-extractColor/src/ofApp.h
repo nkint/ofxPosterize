@@ -1,16 +1,15 @@
-#ifndef _TEST_APP
-#define _TEST_APP
+#pragma once
 
 #include "ofMain.h"
 
 #include <iostream>
 #include <vector>
-#include <GLUT/GLUT.h>
+//#include <GLUT/GLUT.h>
 
 #include "ofxPosterize.h"
 
 
-class testApp : public ofSimpleApp{
+class ofApp : public ofBaseApp{
     
 public:
     
@@ -44,5 +43,3 @@ private:
 	map<int, int> clusteredHistogram;
     
 };
-
-#endif

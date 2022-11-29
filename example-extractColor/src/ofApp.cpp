@@ -1,8 +1,8 @@
-#include "testApp.h"
+#include "ofApp.h"
 
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void ofApp::setup(){
 	cout << "Made with openFrameworks version :" << ofGetVersionInfo();
     cout << "with OpenCV " << CV_VERSION << endl;
     // For this example I added OpenCV library that comes on with official theo ofxOpenCV
@@ -12,7 +12,7 @@ void testApp::setup(){
     extractPalette("lena.jpg");
 }
 
-void testApp::extractPalette(string filename) {
+void ofApp::extractPalette(string filename) {
     ready = false;
     ready = source.loadImage(filename);
     if(ready) {
@@ -28,7 +28,7 @@ void testApp::extractPalette(string filename) {
     }
 }
 
-void testApp::writeWebInterface() {
+void ofApp::writeWebInterface() {
     ofBuffer dataBuffer;
     stringstream ss;
     
@@ -64,7 +64,7 @@ void testApp::writeWebInterface() {
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
+void ofApp::update(){
 }
 
 //--------------------------------------------------------------
@@ -77,7 +77,7 @@ cv::Scalar ofColor2cvScalar(ofColor c) {
     return s;
 }
 
-ofImage testApp::drawPalette(map<int, int> histogram, int width, int height) {
+ofImage ofApp::drawPalette(map<int, int> histogram, int width, int height) {
     
     cv::Mat palette = cv::Mat::zeros(height, width, CV_8UC3);
     vector<int> colors;
@@ -106,7 +106,7 @@ ofImage testApp::drawPalette(map<int, int> histogram, int width, int height) {
     return ofPalette;
 }
 
-void testApp::draw(){
+void ofApp::draw(){
     int w=200, h=200;
     
     ofBackground(0);
@@ -136,31 +136,31 @@ void testApp::draw(){
 
 
 //--------------------------------------------------------------
-void testApp::keyPressed  (int key){
+void ofApp::keyPressed  (int key){
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
+void ofApp::mouseMoved(int x, int y ){
     
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button){
 }
 
 //--------------------------------------------------------------
 
-void testApp::mousePressed(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button){
     
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(){
+void ofApp::mouseReleased(){
     
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo info) {
+void ofApp::dragEvent(ofDragInfo info) {
     if( info.files.size() > 0 ){
 		for(int k = 0; k < info.files.size(); k++){
 			extractPalette( info.files[k] );
