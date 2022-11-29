@@ -67,8 +67,8 @@ public:
         int rows = src.rows;
         int numpix = cols*rows;
         int K = targetColorNumber;
-        
-        int colors[K];
+
+        std::vector<int> colors(K);
         for(int i = 0;i < K;i++){
             colors[i] = 255 / (i + 1);
         }
@@ -128,8 +128,8 @@ public:
     static
     map<int, int> getHistogram(ofImage& image){
         map<int, int> colors;
-        for(int x=0; x<image.width; x++) {
-            for(int y=0; y<image.height; y++) {
+        for(int x=0; x<image.getWidth(); x++) {
+            for(int y=0; y<image.getHeight(); y++) {
                 ofColor c = image.getColor(x, y);
                 colors[c.getHex()]++;
             }
