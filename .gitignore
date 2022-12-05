@@ -47,6 +47,7 @@ xcuserdata
 *.opensdf
 *.suo
 ipch/
+.vs/
 
 #Eclipse
 .metadata
