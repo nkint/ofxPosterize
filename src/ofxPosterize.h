@@ -151,6 +151,19 @@ public:
         }
         return colors;
     };
+
+    //------------------------------------------------------------ extract ofColors
+    static
+        vector<ofColor> getColors(ofImage& image) {
+        vector<ofColor> colors;
+        std::map<int, int> hist = getHistogram(image);
+        for (std::map<int, int>::iterator iter = hist.begin(); iter != hist.end(); ++iter)
+        {
+            int k = iter->first;
+            colors.push_back(ofColor::fromHex(k));
+        }
+        return colors;
+    }
     
 private:
     
