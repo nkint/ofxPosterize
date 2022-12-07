@@ -154,7 +154,7 @@ public:
 
     //------------------------------------------------------------ extract ofColors
     static
-        vector<ofColor> getColors(ofImage& image) {
+    vector<ofColor> getColors(ofImage& image) {
         vector<ofColor> colors;
         std::map<int, int> hist = getHistogram(image);
         for (std::map<int, int>::iterator iter = hist.begin(); iter != hist.end(); ++iter)
@@ -163,6 +163,32 @@ public:
             colors.push_back(ofColor::fromHex(k));
         }
         return colors;
+    }
+
+    //------------------------------------------------------------ extract average ofColors
+    static
+    vector<ofColor> getAverageColors(ofImage& image, int targetColorNumber) {
+        vector<ofColor> colors;
+        std::map<int, int> hist = getHistogram(image);
+        for (std::map<int, int>::iterator iter = hist.begin(); iter != hist.end(); ++iter)
+        {
+            int k = iter->first;
+            colors.push_back(ofColor::fromHex(k));
+        }
+        return getColors( average(image, targetColorNumber) );
+    }
+
+    //------------------------------------------------------------ extract cluster ofColors
+    static
+    vector<ofColor> getClusterColors(ofImage& image, int targetColorNumber) {
+        vector<ofColor> colors;
+        std::map<int, int> hist = getHistogram(image);
+        for (std::map<int, int>::iterator iter = hist.begin(); iter != hist.end(); ++iter)
+        {
+            int k = iter->first;
+            colors.push_back(ofColor::fromHex(k));
+        }
+        return getColors( clusterize(image, targetColorNumber) );
     }
     
 private:
