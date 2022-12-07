@@ -2,6 +2,7 @@
 //  ofxPosterize.h
 //
 //  Created by alberto on 2/9/13.
+//  Hacked to make it work in 2022 by Bruno Herfst 
 //
 //
 
@@ -54,7 +55,13 @@ public:
         ofxCv::imitate(result, image);
         ofxCv::toOf(averageGrid, result);
         result.update();
-        return result;
+        
+        // Clean Copy
+        ofPixels pixels = result.getPixels();
+        ofImage resultCopy;
+        resultCopy.setFromPixels(pixels);
+
+        return resultCopy;
     };
     
     //------------------------------------------------------------ kmeans
@@ -123,7 +130,13 @@ public:
         ofxCv::imitate(result, image);
         ofxCv::toOf(colored, result);
         result.update();
-        return result;
+
+        // Clean Copy
+        ofPixels pixels = result.getPixels();
+        ofImage resultCopy;
+        resultCopy.setFromPixels(pixels);
+
+        return resultCopy;
     };
     
     //------------------------------------------------------------ extract colors
