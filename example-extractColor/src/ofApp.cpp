@@ -58,7 +58,7 @@ void ofApp::writeWebInterface() {
     
     ss.clear();
     ss.str("");
-    ss << "open " +ofToDataPath("webinterface/index.html", true);
+    ss << ofToDataPath("webinterface/index.html", true);
     cout << "calling: " << ss.str() << endl;
     std::system(ss.str().c_str());
 }
