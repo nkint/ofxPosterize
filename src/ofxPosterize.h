@@ -2,6 +2,7 @@
 //  ofxPosterize.h
 //
 //  Created by alberto on 2/9/13.
+//  Hacked to make it work in 2022 by Bruno Herfst 
 //
 //
 
@@ -45,15 +46,22 @@ public:
                               cv::Point(j*width, i*height),
                               cv::Point(j*width+width, i*height+height),
                               cv::Scalar(mean.at<double>(0,0),
-                                         mean.at<double>(0,1),
-                                         mean.at<double>(0,2)),
+                                         mean.at<double>(1,0),
+                                         mean.at<double>(2,0)),
                               CV_FILLED);
             }
         }
-        
+
+        ofxCv::imitate(result, image);
         ofxCv::toOf(averageGrid, result);
         result.update();
-        return result;
+        
+        // Clean Copy
+        ofPixels pixels = result.getPixels();
+        ofImage resultCopy;
+        resultCopy.setFromPixels(pixels);
+
+        return resultCopy;
     };
     
     //------------------------------------------------------------ kmeans
@@ -62,13 +70,13 @@ public:
         ofImage result;
         cv::Mat src = ofxCv::toCv(image).clone();
         cv::Mat clustered, colored, bestLabels, centers, samples;
-        vector<cv::Mat> bgr;
+        std::vector<cv::Mat> bgr;
         int cols = src.cols;
         int rows = src.rows;
         int numpix = cols*rows;
         int K = targetColorNumber;
-        
-        int colors[K];
+
+        std::vector<int> colors(K);
         for(int i = 0;i < K;i++){
             colors[i] = 255 / (i + 1);
         }
@@ -95,7 +103,7 @@ public:
         // i think there is a better way to do this mayebe some Mat::reshape?
         clustered = cv::Mat(rows, cols, CV_32F);
         for(int i = 0;i < numpix;i++){
-            int label = bestLabels.at<int>(0, i);
+            int label = bestLabels.at<int>(i, 0);
             clustered.at<float>(i / cols, i % cols) = (float)((colors[label]));
         }
         clustered.convertTo(clustered, CV_8U);
@@ -119,23 +127,69 @@ public:
             }
         }
         
+        ofxCv::imitate(result, image);
         ofxCv::toOf(colored, result);
         result.update();
-        return result;
+
+        // Clean Copy
+        ofPixels pixels = result.getPixels();
+        ofImage resultCopy;
+        resultCopy.setFromPixels(pixels);
+
+        return resultCopy;
     };
     
     //------------------------------------------------------------ extract colors
     static
-    map<int, int> getHistogram(ofImage& image){
-        map<int, int> colors;
-        for(int x=0; x<image.width; x++) {
-            for(int y=0; y<image.height; y++) {
+    std::map<int, int> getHistogram(ofImage& image){
+        std::map<int, int> colors;
+        for(int x=0; x<image.getWidth(); x++) {
+            for(int y=0; y<image.getHeight(); y++) {
                 ofColor c = image.getColor(x, y);
                 colors[c.getHex()]++;
             }
         }
         return colors;
     };
+
+    //------------------------------------------------------------ extract ofColors
+    static
+    vector<ofColor> getColors(ofImage& image) {
+        vector<ofColor> colors;
+        std::map<int, int> hist = getHistogram(image);
+        for (std::map<int, int>::iterator iter = hist.begin(); iter != hist.end(); ++iter)
+        {
+            int k = iter->first;
+            colors.push_back(ofColor::fromHex(k));
+        }
+        return colors;
+    }
+
+    //------------------------------------------------------------ extract average ofColors
+    static
+    vector<ofColor> getAverageColors(ofImage& image, int targetColorNumber) {
+        vector<ofColor> colors;
+        std::map<int, int> hist = getHistogram(image);
+        for (std::map<int, int>::iterator iter = hist.begin(); iter != hist.end(); ++iter)
+        {
+            int k = iter->first;
+            colors.push_back(ofColor::fromHex(k));
+        }
+        return getColors( average(image, targetColorNumber) );
+    }
+
+    //------------------------------------------------------------ extract cluster ofColors
+    static
+    vector<ofColor> getClusterColors(ofImage& image, int targetColorNumber) {
+        vector<ofColor> colors;
+        std::map<int, int> hist = getHistogram(image);
+        for (std::map<int, int>::iterator iter = hist.begin(); iter != hist.end(); ++iter)
+        {
+            int k = iter->first;
+            colors.push_back(ofColor::fromHex(k));
+        }
+        return getColors( clusterize(image, targetColorNumber) );
+    }
     
 private:
     
